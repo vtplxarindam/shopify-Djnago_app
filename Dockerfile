@@ -10,22 +10,21 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install pipenv
-RUN pip install --upgrade pip && pip install pipenv==2024.4.1
+RUN pip install --upgrade pip && pip install pipenv==2022.1.8
 
 # Copy Pipfile
 COPY Pipfile Pipfile.lock ./
 
-# Install Python dependencies
-RUN pipenv install --system --deploy
+# Install Python dependencies in virtualenv (remove --system flag)
+RUN pipenv install --deploy
 
 # Copy project files
 COPY . .
 
-# Collect static files
-RUN python manage.py collectstatic --noinput || true
-
 # Expose port
 EXPOSE 8000
 
-# Run the application
-CMD pipenv run python manage.py migrate && pipenv run python manage.py runserver
+# Run migrations and start server with pipenv run
+CMD pipenv run python manage.py migrate && \
+    pipenv run python manage.py collectstatic --noinput && \
+    pipenv run python manage.py runserver 0.0.0.0:$PORT
