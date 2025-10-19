@@ -21,12 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Make this unique and store it as an environment variable. 
 # Do not share it with anyone or commit it to version control.
-SECRET_KEY = os.environ.get('DJANGO_SECRET')
+SECRET_KEY = os.environ.get('DJANGO_SECRET','@dm1#zy&nq5_2g9y8e4!687sj+$*v&7-)4#=36w!q4lm4td0e@')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
