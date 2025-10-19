@@ -1,15 +1,11 @@
 # railway.toml
-# Configuration for deploying a Django + Pipenv app using Python 3.8 on Railway
-
 [build]
-# Build command: create Python 3.8 version file and install dependencies
 buildCommand = """
-echo 'python-3.8' > .python-version
-
+echo 'python-3.8' > .python-version && \
+pip install pipenv==2022.1.8
 """
 
 [start]
-# Start command: run migrations and start Django
 startCommand = """
 pipenv run python manage.py migrate && \
 pipenv run python manage.py runserver 0.0.0.0:$PORT
