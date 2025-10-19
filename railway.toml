@@ -4,8 +4,8 @@
 [build]
 # Build command: create Python 3.8 version file and install dependencies
 buildCommand = """
-echo 'python-3.8.18' > runtime.txt
-pip install --upgrade pip && pip install pipenv
+echo 'python-3.8' > .python-version
+pip install --upgrade pip && pip install pipenv==2024.4.1
 pipenv install --deploy --ignore-pipfile
 """
 
