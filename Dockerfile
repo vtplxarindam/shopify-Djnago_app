@@ -28,4 +28,4 @@ RUN python manage.py collectstatic --noinput || true
 EXPOSE 8000
 
 # Run the application
-CMD python manage.py migrate && gunicorn shopify_django_app.wsgi:application --bind 0.0.0.0:$PORT
+CMD pipenv run python manage.py migrate && pipenv run python manage.py runserver
