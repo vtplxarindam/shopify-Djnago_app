@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install pipenv
-RUN pip install --upgrade pip && pip install pipenv==2022.1.8
+RUN pip install --upgrade pip && pip install pipenv==2024.4.1
 
 # Copy Pipfile
 COPY Pipfile Pipfile.lock ./
